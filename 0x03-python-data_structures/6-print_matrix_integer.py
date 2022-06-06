@@ -6,4 +6,4 @@ def print_matrix_integer(matrix=[[]]):
             end = ' '
             if i == len(lis) - 1:
                 end = '\n'
-            print("{0:d}".format(lis[i]), end=end)
+            print("{:d}".format(lis[i]), end=end)
