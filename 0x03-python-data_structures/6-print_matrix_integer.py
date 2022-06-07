@@ -9,3 +9,5 @@ def print_matrix_integer(matrix=[[]]):
                     if i == len(lis) - 1:
                         end = '\n'
                     print("{:d}".format(lis[i]), end=end)
+    else:
+        print()
