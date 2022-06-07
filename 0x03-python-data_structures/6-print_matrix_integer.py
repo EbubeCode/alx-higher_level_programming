@@ -10,4 +10,4 @@ def print_matrix_integer(matrix=[[]]):
                         end = ''
                     print("{:d}".format(lis[i]), end=end)
 
-    print()
+        print()
