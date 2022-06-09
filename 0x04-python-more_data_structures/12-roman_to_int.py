@@ -107,7 +107,7 @@ def handle_M(roman_string):
 
 def roman_to_int(roman_string):
     if type(roman_string) != str:
-        return None
+        return 0
     roman_string = roman_string.upper()
     valid_string(roman_string, "IVXLCDM")
     return get_handler(roman_string)
