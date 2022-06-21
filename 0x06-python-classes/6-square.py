@@ -18,9 +18,11 @@ class Square:
         """prints in stdout the square with the char #"""
         s = self.__size
         x = self.__position[0]
+        y = self.__position[1]
         if s == 0:
             print()
         else:
+            print('\n'*y, end='')
             for i in range(s):
                 print(' '*x, end='')
                 for j in range(s):
