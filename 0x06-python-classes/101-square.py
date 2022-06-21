@@ -26,7 +26,8 @@ class Square:
                 strn += ' ' * x
                 for j in range(s):
                     strn += '#'
-                strn += '\n'
+                if i < s - 1:
+                    strn += '\n'
         return strn
 
     def my_print(self):
