@@ -1,0 +1,37 @@
+import function from module
+	>>> print_sq = __import__('4-print_square').print_square
+
+check for 4
+	>>> print_sq(4)
+	####
+	####
+	####
+	####
+	<BLANKLINE>
+
+check for 0
+	>>> print_sq(0)
+	<BLANKLINE>
+
+check for 1
+	>>> print_sq(1)
+	#
+	<BLANKLINE>
+
+
+check for number not integer
+	>>> print_sq(None)
+	Traceback (most recent call last):
+		...
+	TypeError: size must be an integer
+
+	>>> print_sq("e")
+	Traceback (most recent call last):
+		...
+	TypeError: size must be an integer
+
+check for negative number
+	>>> print_sq(-4)
+	Traceback (most recent call last):
+		...
+	ValueError: size must be >= 0
