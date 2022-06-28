@@ -1,0 +1,32 @@
+Import module function
+
+	>>> add = __import__('0-add_integer').add_integer
+
+test for correct input
+
+	>>> add(2, 8)
+	10
+
+test ve and ne
+	>>> add(100, -2)
+	98
+
+test one argument
+	>>> add(2)
+	100
+
+test float and integer
+	>>> add(100.3, -2)
+	98
+
+test int and string
+	>>> add(4, "School")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+test one argument as None
+	>>> add(None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
