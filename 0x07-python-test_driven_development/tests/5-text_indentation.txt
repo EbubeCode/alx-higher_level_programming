@@ -1,0 +1,20 @@
+import function from module
+	>>> text_ind = __import__('5-text_indentation').text_indentation
+
+
+check regular text
+	>>> text_ind("Ebube")
+	Ebube
+
+Check text with delimiters
+	>>> text_ind("What's your name?My name is Ebube.")
+	What's your name?
+	<BLANKLINE>
+	My name is Ebube.
+	<BLANKLINE>
+
+check for non string
+	>>> text_ind(12)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
