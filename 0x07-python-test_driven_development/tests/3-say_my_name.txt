@@ -1,0 +1,23 @@
+import the function
+	>>> say_mn = __import__('3-say_my_name').say_my_name
+
+check full name
+	>>> say_mn("John", "Smith")
+	My name is John Smith
+
+check for only first_name
+	>>> say_mn("Bob")
+	My name is Bob 
+
+check for first_name not string
+	>>> say_mn(12, "Bob")
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+check for first_name not string
+	>>> say_mn("Bob", 33)
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string
+

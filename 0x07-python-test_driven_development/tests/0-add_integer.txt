@@ -30,3 +30,15 @@ test one argument as None
 	Traceback (most recent call last):
 		...
 	TypeError: a must be an integer
+
+test no arg
+	>>> add()
+	Traceback (most recent call last):
+		...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+test string and string
+	>>> add("E", "B")
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
