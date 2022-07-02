@@ -16,10 +16,6 @@ class TestMaxInteger(unittest.TestCase):
     def test_none(self):
         self.assertEqual(max_int([]), None)
 
-    def test_exception(self):
-        self.assertRaises(TypeError, max_int, "ebube")
-
-
 
 if __name__ == '__main__':
     unittest.main()
