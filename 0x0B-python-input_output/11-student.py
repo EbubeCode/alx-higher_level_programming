@@ -17,7 +17,6 @@ class Student:
             for i in attrs:
                 if type(i) != str:
                     dic = {}
-                    break
                 elif i in ['first_name', 'last_name', 'age']:
                     dic[i] = getattr(self, i)
             if dic != {}:
