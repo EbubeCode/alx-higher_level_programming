@@ -20,13 +20,25 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
+        """shows a graphical representation of this
+        rectangle using the character #"""
         w = self.__width
         h = self.__height
 
+        print('\n' * self.x, end='')
         for i in range(h):
+            print(' ' * self.y, end='')
             for j in range(w):
                 print('#', end='')
             print()
+
+    def __str__(self):
+        """returns the string representation of this
+        rectangle"""
+        strn = '[Rectangle] (' + str(self.id) + ') '
+        strn += str(self.x) + '/' + str(self.y) + ' - '
+        strn += str(self.width) + '/' + str(self.height)
+        return strn
 
     @staticmethod
     def __check_int(value, attr):
@@ -59,6 +71,33 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
+
+    def update(self, *args, **kwargs):
+        """method that assigns an argument to each
+        attribute"""
+        x = len(args)
+        if x:
+            self.id = args[0]
+        if x > 1:
+            self.width = args[1]
+        if x > 2:
+            self.height = args[2]
+        if x > 3:
+            self.x = args[3]
+        if x > 4:
+            self.y = args[4]
+        if x == 0:
+            for key, value in kwargs.items():
+                if key == 'height':
+                    self.height = value
+                elif key == 'width':
+                    self.width = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value
+                elif key == 'id':
+                    self.id = value
 
     @property
     def x(self):
