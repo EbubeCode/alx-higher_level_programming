@@ -51,7 +51,7 @@ class TestBase(unittest.TestCase):
     def test_invalidx(self):
         """invalid x"""
         with self.assertRaises(TypeError):
-            square = Square(4,'0', 0, 7)
+            square = Square(4, '0', 0, 7)
         with self.assertRaises(ValueError):
             square = Square(4, -7, 6, 9)
         square = Square(4)
@@ -170,6 +170,56 @@ class TestBase(unittest.TestCase):
         square_str = str(square)
         expected = '[Square] (8) 81/4 - 1'
         self.assertEqual(square_str, expected)
+
+    def test_dic_rep(self):
+        """test the dictionary representation of a Square"""
+        square = Square(10, 2, 1, 1)
+        dic_rep = square.to_dictionary()
+        dic = {'id': 1, 'size': 10, 'x': 2, 'y': 1}
+        self.assertEqual(dic_rep, dic)
+
+    def test_save_to_file(self):
+        """tests saving a list of Squares to file"""
+        s1 = Square(4, id=3)
+        s2 = Square(2, 3, 3, 4)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json", "r", encoding='UTF-8') as f:
+            lis = [{'id': 3, 'size': 4, 'x': 0, 'y': 0}]
+            lis.append({'id': 4, 'size': 2, 'x': 3, 'y': 3})
+            self.assertEqual(eval(f.read()), lis)
+
+    def test_create(self):
+        """test creation from the create method in the base class"""
+        s1 = Square(5, 2, 2)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+
+        self.assertEqual(s1.id, s2.id)
+        self.assertEqual(s1.size, s2.size)
+        self.assertEqual(s1.y, s2.y)
+        self.assertEqual(s1.x, s2.x)
+
+    def test_loadfromfile(self):
+        """test loading a Rectangle from file"""
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(2)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+        s3 = list_squares_output[0]
+        s4 = list_squares_output[1]
+ 
+        self.assertEqual(s1.id, s3.id)
+        self.assertEqual(s1.size, s3.size)
+        self.assertEqual(s1.y, s3.y)
+        self.assertEqual(s1.x, s3.x)
+ 
+        self.assertEqual(s4.id, s2.id)
+        self.assertEqual(s4.width, s2.width)
+        self.assertEqual(s4.y, s2.y)
+        self.assertEqual(s4.x, s2.x)
 
 
 if __name__ == "__main__":

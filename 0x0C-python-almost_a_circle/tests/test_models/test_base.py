@@ -24,6 +24,13 @@ class TestBase(unittest.TestCase):
         base = Base('my_id')
         self.assertEqual(base.id, 'my_id')
 
+    def test_from_json_string(self):
+        """tests the static method from_json_string"""
+        list_input = [{'id': 89, 'width': 10, 'height': 4},
+                      {'id': 7, 'width': 1, 'height': 7}]
+        list_str = str(list_input)
+        self.assertEqual(list_input, Base.from_json_string(list_str))
+
 
 if __name__ == "__main__":
     unittest.main()

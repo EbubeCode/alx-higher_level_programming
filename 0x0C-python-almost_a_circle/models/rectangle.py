@@ -15,6 +15,17 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def to_dictionary(self):
+        """This returns the dictionary representation of this
+        Rectangle instance"""
+        dic = {}
+        dic['id'] = self.id
+        dic['width'] = self.width
+        dic['height'] = self.height
+        dic['x'] = self.x
+        dic['y'] = self.y
+        return dic
+
     def area(self):
         """calculates the area of the rectangle"""
         return self.__width * self.__height

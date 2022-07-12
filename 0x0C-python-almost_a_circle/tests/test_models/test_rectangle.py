@@ -190,6 +190,60 @@ class TestBase(unittest.TestCase):
         expected = '[Rectangle] (8) 81/4 - 6/1'
         self.assertEqual(rect_str, expected)
 
+    def test_dic_rep(self):
+        """test the dictionary representation of a rectangle"""
+        rect = Rectangle(10, 2, 1, 9, 5)
+        dic_rep = rect.to_dictionary()
+        dic = {'id': 5, 'x': 1, 'y': 9, 'width': 10, 'height': 2}
+        self.assertEqual(dic_rep, dic)
+
+    def test_save_to_file(self):
+        """test saving a list of Rectangles to file"""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, id=2)
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", "r", encoding='UTF-8') as file:
+            lis = [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}]
+            lis.append({"y": 0, "x": 0, "id": 2, "width": 2, "height": 4})
+            self.assertEqual(eval(file.read()), lis)
+
+    def test_create(self):
+        """test creation from the create method in the base class"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+
+        self.assertEqual(r1.id, r2.id)
+        self.assertEqual(r1.height, r2.height)
+        self.assertEqual(r1.width, r2.width)
+        self.assertEqual(r1.y, r2.y)
+        self.assertEqual(r1.x, r2.x)
+
+    def test_loadfromfile(self):
+        """test loading a Rectangle from file"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file(list_rectangles_input)
+
+        list_rectangles_output = Rectangle.load_from_file()
+        r3 = list_rectangles_output[0]
+        r4 = list_rectangles_output[1]
+
+        self.assertEqual(r1.id, r3.id)
+        self.assertEqual(r1.height, r3.height)
+        self.assertEqual(r1.width, r3.width)
+        self.assertEqual(r1.y, r3.y)
+        self.assertEqual(r1.x, r3.x)
+
+        self.assertEqual(r4.id, r2.id)
+        self.assertEqual(r4.height, r2.height)
+        self.assertEqual(r4.width, r2.width)
+        self.assertEqual(r4.y, r2.y)
+        self.assertEqual(r4.x, r2.x)
+
 
 if __name__ == "__main__":
     unittest.main()
