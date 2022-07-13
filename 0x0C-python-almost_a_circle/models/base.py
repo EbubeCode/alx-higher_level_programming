@@ -5,7 +5,8 @@ Module for the class Base
 import os
 
 class Base:
-    """Class Base"""
+    """Class Base which will be the parent
+    of Rectangle"""
     __nb_objects = 0
 
     def __init__(self, id=None):
