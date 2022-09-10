@@ -8,15 +8,15 @@ import sys
 import MySQLdb
 
 if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db = sys.argv[3]
-    conn = MySQLdb.connect(host="localhost", port=3306,
-                           user=username, passwd=password,
-                           db=db, charset="utf8")
+    u = sys.argv[1]
+    p = sys.argv[2]
+    d = sys.argv[3]
+    conn = MySQLdb.connect(host="localhost", port=3306, user=u, passwd=p,
+                           db=d, charset="utf8")
     cur = conn.cursor()
-    cur.execute("SELECT id, name FROM states WHERE name='{}' ORDER BY id ASC"
-                .format(sys.argv[4]))
+    n = sys.argv[4]
+    cur.execute("SELECT id, name FROM states WHERE name=%s ORDER BY id ASC",
+                (n,))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
