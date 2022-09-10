@@ -15,8 +15,8 @@ if __name__ == '__main__':
                            db=d, charset="utf8")
     cur = conn.cursor()
     n = sys.argv[4]
-    cur.execute("SELECT id, name FROM states WHERE name=%s ORDER BY id ASC",
-                (n,))
+    cur.execute("SELECT id, name FROM states WHERE name='{:s}' ORDER BY id ASC"
+                .format(n))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
