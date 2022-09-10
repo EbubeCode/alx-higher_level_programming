@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-'''This script lists data in a database'''
+'''
+This script lists data in a database
+It takes an argument for searching
+'''
 
 import sys
 import MySQLdb
