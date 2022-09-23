@@ -1,6 +1,3 @@
 #!/bin/bash
 # query a header
-code=$(curl -sL -o tmp -w "%{http_code}" "$1")
-if [ "200" == "$code" ]; then
-	cat tmp
-fi
+curl -sL "$1" -w ", %{http_code}" | grep ", 200" | sed -e 's/, 200//' | tr -d '\n'
