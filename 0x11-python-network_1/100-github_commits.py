@@ -12,9 +12,7 @@ if __name__ == "__main__":
         repo = sys.argv[2]
     url = f'https://api.github.com/repos/{owner}/{repo}/commits'
     res = requests.get(url)
-    if res.status_code == 401:
-        print('None')
-    else:
+    if res.status_code == 200:
         json = res.json()
         for c in json[:10]:
             name = c.get('commit').get('author').get('name')
